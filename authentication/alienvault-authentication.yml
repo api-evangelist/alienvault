@@ -1,0 +1,17 @@
+generated: '2026-07-17'
+method: searched
+source: openapi/alienvault-otx-openapi.yml
+docs: https://otx.alienvault.com/api
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: OTXApiKey
+  type: apiKey
+  in: header
+  parameter: X-OTX-API-KEY
+  description: OTX API key, available from your OTX account settings page.
+  sources:
+  - openapi/alienvault-otx-openapi.yml
