@@ -1,0 +1,27 @@
+# AlienVault OTX
+
+> AlienVault's Open Threat Exchange (OTX) is one of the largest open threat-intelligence
+> communities. The OTX DirectConnect API provides programmatic access to threat "pulses"
+> (curated indicator-of-compromise collections), indicator detail lookups (IPv4/IPv6,
+> domain, hostname, URL, file hash, CVE), pulse/user search, and indicator submission.
+> Authentication is via an X-OTX-API-KEY header. Now operated under the LevelBlue brand.
+
+## APIs
+- [OTX DirectConnect API](https://otx.alienvault.com/api): pulses, indicators, users, search. Base URL https://otx.alienvault.com/api/v1
+
+## Specs
+- [OpenAPI](openapi/alienvault-otx-openapi.yml): OTX DirectConnect API (derived from the official OTXv2 SDK)
+
+## Docs
+- [API documentation](https://otx.alienvault.com/api)
+- [Authentication](authentication/alienvault-authentication.yml): API key in X-OTX-API-KEY header
+- [Conventions](conventions/alienvault-conventions.yml): pagination, change feeds, error envelope
+- [Error catalog](errors/alienvault-problem-types.yml)
+- [Data model](data-model/alienvault-data-model.yml): Pulse, Indicator, User
+
+## SDKs
+- [OTXv2 (Python)](https://pypi.org/project/OTXv2/): official — pip install OTXv2 — https://github.com/AlienVault-Labs/OTX-Python-SDK
+
+## Agent
+- [MCP server (candidate)](mcp/alienvault-mcp.yml): candidate tool surface derived from the OpenAPI
+- [Agent skills](skills/_index.yml)

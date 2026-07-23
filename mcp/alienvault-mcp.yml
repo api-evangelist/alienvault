@@ -1,0 +1,35 @@
+generated: '2026-07-17'
+method: derived
+status: candidate
+source: openapi/alienvault-otx-openapi.yml
+notes: >-
+  No official hosted/remote AlienVault OTX MCP server was found. This is a candidate
+  tool surface derived one-tool-per-operation from the OTX DirectConnect OpenAPI.
+server:
+  name: alienvault-otx
+  transport: stdio
+tools:
+- name: get_subscribed_pulses
+  description: List the pulses the authenticated user is subscribed to.
+  source_operation: openapi/alienvault-otx-openapi.yml#getSubscribedPulses
+- name: search_pulses
+  description: Search OTX pulses by keyword.
+  source_operation: openapi/alienvault-otx-openapi.yml#searchPulses
+- name: get_pulse_details
+  description: Get details for a specific pulse.
+  source_operation: openapi/alienvault-otx-openapi.yml#getPulseDetails
+- name: get_pulse_indicators
+  description: List the indicators of compromise attached to a pulse.
+  source_operation: openapi/alienvault-otx-openapi.yml#getPulseIndicators
+- name: get_indicator_details
+  description: Look up threat detail for an indicator (IP, domain, hostname, URL, hash, CVE).
+  source_operation: openapi/alienvault-otx-openapi.yml#getIndicatorDetails
+- name: create_pulse
+  description: Create a new pulse of indicators.
+  source_operation: openapi/alienvault-otx-openapi.yml#createPulse
+- name: submit_url
+  description: Submit a URL for analysis.
+  source_operation: openapi/alienvault-otx-openapi.yml#submitUrl
+- name: search_users
+  description: Search OTX community users.
+  source_operation: openapi/alienvault-otx-openapi.yml#searchUsers

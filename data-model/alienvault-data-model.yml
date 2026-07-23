@@ -1,0 +1,38 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/alienvault-otx-openapi.yml
+entities:
+- name: Pulse
+  description: A curated collection of indicators of compromise shared in OTX.
+  key_fields: [id, name, description, author_name, created, modified, public, tlp, tags]
+- name: Indicator
+  description: A single indicator of compromise (IP, domain, hostname, URL, file hash, CVE).
+  key_fields: [id, indicator, type, created]
+- name: User
+  description: An OTX community member who authors and subscribes to pulses.
+  key_fields: [username, member_since, pulse_count, follower_count]
+relationships:
+- from: Pulse
+  to: Indicator
+  type: has_many
+  via: indicators
+- from: Pulse
+  to: User
+  type: belongs_to
+  via: author_name
+- from: User
+  to: Pulse
+  type: has_many
+  via: pulses
+- from: User
+  to: User
+  type: has_many
+  via: following/subscriptions
+indicator_types:
+- IPv4
+- IPv6
+- domain
+- hostname
+- url
+- file (hash)
+- cve

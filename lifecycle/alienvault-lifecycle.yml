@@ -1,0 +1,18 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/alienvault-otx-openapi.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://otx.alienvault.com/api
+deprecation:
+  policy_url: null
+  sunset_header: false
+sla:
+  url: null
+status_page: null
+deprecated_operations: []
+notes: >-
+  OTX DirectConnect versions its API in the URL path (/api/v1/). No public deprecation
+  policy, SLA, or dedicated status page was found for the OTX API. No StatusPage or
+  Deprecation pointer is emitted since neither is published.

@@ -1,0 +1,14 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for AlienVault OTX DirectConnect API
+  version: 1.0.0
+extends: openapi/alienvault-otx-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: true
+    x-apievangelist-category: threat-intelligence
+    x-authentication: api-key-header
+- target: $.info
+  update:
+    x-agent-ready: candidate-mcp

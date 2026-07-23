@@ -1,0 +1,12 @@
+generated: '2026-07-17'
+method: generated
+source: openapi/alienvault-otx-openapi.yml
+skills:
+- file: alienvault-lookup-indicator.md
+  name: Look up a threat indicator in OTX
+  api: openapi/alienvault-otx-openapi.yml
+  operations: [getIndicatorDetails, searchPulses, getPulseDetails]
+- file: alienvault-monitor-pulses.md
+  name: Monitor subscribed threat pulses
+  api: openapi/alienvault-otx-openapi.yml
+  operations: [getSubscribedPulses, getPulseEvents, getPulseIndicators]

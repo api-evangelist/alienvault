@@ -1,0 +1,71 @@
+openapi: 3.0.3
+info:
+  title: AlienVault OTX DirectConnect Indicators Search API
+  description: The Open Threat Exchange (OTX) DirectConnect API provides programmatic access to the AlienVault OTX threat intelligence community. It exposes threat "pulses" (curated collections of indicators of compromise), indicator detail lookups (IPv4/IPv6, domain, hostname, URL, file hash, CVE), user and pulse search, and indicator submission. Authentication is by API key passed in the X-OTX-API-KEY request header. Endpoint paths and the authentication scheme are derived from the official AlienVault OTX Python SDK (OTXv2).
+  version: v1
+  contact:
+    name: AlienVault OTX (LevelBlue)
+    url: https://otx.alienvault.com/api
+  license:
+    name: OTX Terms of Service
+    url: https://otx.alienvault.com/terms/
+servers:
+- url: https://otx.alienvault.com
+  description: OTX production
+security:
+- OTXApiKey: []
+tags:
+- name: Search
+  description: Search across pulses and users
+paths:
+  /api/v1/search/pulses:
+    get:
+      operationId: searchPulses
+      summary: Search pulses
+      tags:
+      - Search
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Paginated pulse search results
+  /api/v1/search/users:
+    get:
+      operationId: searchUsers
+      summary: Search users
+      tags:
+      - Search
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Paginated user search results
+components:
+  securitySchemes:
+    OTXApiKey:
+      type: apiKey
+      in: header
+      name: X-OTX-API-KEY
+      description: OTX API key, available from your OTX account settings page.

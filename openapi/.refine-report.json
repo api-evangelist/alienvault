@@ -1,0 +1,20 @@
+{
+  "provider": "alienvault",
+  "sources": [
+    "alienvault-indicators-api-openapi.yml",
+    "alienvault-pulses-api-openapi.yml",
+    "alienvault-search-api-openapi.yml",
+    "alienvault-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "alienvault-indicators-api-openapi.yml",
+    "alienvault-pulses-api-openapi.yml",
+    "alienvault-search-api-openapi.yml",
+    "alienvault-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

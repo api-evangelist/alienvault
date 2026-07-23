@@ -1,0 +1,31 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/alienvault-otx-openapi.yml
+format: http-status
+notes: >-
+  Derived from the 4xx responses declared in the OTX DirectConnect OpenAPI. OTX returns
+  standard HTTP status codes with a JSON body; it does not publish an RFC 9457
+  problem+json media type. Titles/remediation are derived, not from a published error
+  reference.
+problems:
+- status: 403
+  title: Forbidden
+  detail: Missing or invalid X-OTX-API-KEY header.
+  remediation: Supply a valid OTX API key from your account settings in the X-OTX-API-KEY header.
+  source_operations:
+  - openapi/alienvault-otx-openapi.yml#getSubscribedPulses
+  - openapi/alienvault-otx-openapi.yml#getMyPulses
+- status: 404
+  title: Not Found
+  detail: The requested pulse, user, or indicator does not exist.
+  remediation: Verify the pulse_id, username, or indicator value.
+  source_operations:
+  - openapi/alienvault-otx-openapi.yml#getPulseDetails
+  - openapi/alienvault-otx-openapi.yml#getUserInfo
+  - openapi/alienvault-otx-openapi.yml#getIndicatorDetails
+- status: 400
+  title: Bad Request
+  detail: The request payload was invalid (e.g. malformed pulse or indicator).
+  remediation: Validate the request body against the schema; use validateIndicator before creating a pulse.
+  source_operations:
+  - openapi/alienvault-otx-openapi.yml#createPulse

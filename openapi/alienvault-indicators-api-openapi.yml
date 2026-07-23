@@ -1,0 +1,158 @@
+openapi: 3.0.3
+info:
+  title: AlienVault OTX DirectConnect Indicators API
+  description: The Open Threat Exchange (OTX) DirectConnect API provides programmatic access to the AlienVault OTX threat intelligence community. It exposes threat "pulses" (curated collections of indicators of compromise), indicator detail lookups (IPv4/IPv6, domain, hostname, URL, file hash, CVE), user and pulse search, and indicator submission. Authentication is by API key passed in the X-OTX-API-KEY request header. Endpoint paths and the authentication scheme are derived from the official AlienVault OTX Python SDK (OTXv2).
+  version: v1
+  contact:
+    name: AlienVault OTX (LevelBlue)
+    url: https://otx.alienvault.com/api
+  license:
+    name: OTX Terms of Service
+    url: https://otx.alienvault.com/terms/
+servers:
+- url: https://otx.alienvault.com
+  description: OTX production
+security:
+- OTXApiKey: []
+tags:
+- name: Indicators
+  description: Indicator of compromise detail lookups and submission
+paths:
+  /api/v1/pulses/indicators/validate:
+    post:
+      operationId: validateIndicator
+      summary: Validate an indicator
+      tags:
+      - Indicators
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                indicator:
+                  type: string
+                type:
+                  type: string
+      responses:
+        '200':
+          description: Validation result
+  /api/v1/indicators/{type}/{indicator}/{section}:
+    get:
+      operationId: getIndicatorDetails
+      summary: Get indicator details
+      description: Look up threat detail for an indicator. `type` is one of IPv4, IPv6, domain, hostname, url, hash (file), cve. `section` selects a facet (general, geo, malware, url_list, passive_dns, reputation, analysis, etc.).
+      tags:
+      - Indicators
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - IPv4
+          - IPv6
+          - domain
+          - hostname
+          - url
+          - file
+          - cve
+      - name: indicator
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: section
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Indicator detail for the requested section
+        '404':
+          description: Indicator not found
+  /api/v1/indicators/submit_file:
+    post:
+      operationId: submitFile
+      summary: Submit a file for analysis
+      tags:
+      - Indicators
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Submission accepted
+  /api/v1/indicators/submitted_files:
+    get:
+      operationId: getSubmittedFiles
+      summary: List submitted files
+      tags:
+      - Indicators
+      responses:
+        '200':
+          description: Paginated list of submitted files
+  /api/v1/indicators/submit_url:
+    post:
+      operationId: submitUrl
+      summary: Submit a URL for analysis
+      tags:
+      - Indicators
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+      responses:
+        '200':
+          description: Submission accepted
+  /api/v1/indicators/submit_urls:
+    post:
+      operationId: submitUrls
+      summary: Submit multiple URLs for analysis
+      tags:
+      - Indicators
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                urls:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Submission accepted
+  /api/v1/indicators/submitted_urls:
+    get:
+      operationId: getSubmittedUrls
+      summary: List submitted URLs
+      tags:
+      - Indicators
+      responses:
+        '200':
+          description: Paginated list of submitted URLs
+components:
+  securitySchemes:
+    OTXApiKey:
+      type: apiKey
+      in: header
+      name: X-OTX-API-KEY
+      description: OTX API key, available from your OTX account settings page.

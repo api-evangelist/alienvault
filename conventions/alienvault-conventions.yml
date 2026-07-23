@@ -1,0 +1,42 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/alienvault-otx-openapi.yml
+authentication:
+  style: api-key
+  location: header
+  parameter: X-OTX-API-KEY
+  ref: authentication/alienvault-authentication.yml
+pagination:
+  style: page-number
+  request_params:
+  - limit
+  - page
+  response_fields:
+  - results
+  - count
+  - next
+  - previous
+  notes: >-
+    List endpoints (subscribed pulses, search, indicators) return a paged envelope with
+    a `next` URL for the following page and `count` for the total, in the Django REST
+    Framework style OTX uses.
+change_feed:
+  supported: true
+  mechanism: modified_since / since query parameter on pulse list and events endpoints
+  operations:
+  - getSubscribedPulses
+  - getPulseEvents
+idempotency:
+  supported: false
+  notes: >-
+    OTX does not document an idempotency-key mechanism. Pulse creation is not idempotent;
+    de-duplicate client-side.
+versioning:
+  style: uri-path
+  ref: lifecycle/alienvault-lifecycle.yml
+error_envelope:
+  style: http-status + json body
+  ref: errors/alienvault-problem-types.yml
+rate_limiting:
+  documented: false
+  notes: OTX applies request throttling but does not publish specific rate-limit numbers or headers.

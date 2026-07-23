@@ -1,0 +1,243 @@
+openapi: 3.0.3
+info:
+  title: AlienVault OTX DirectConnect Indicators Pulses API
+  description: The Open Threat Exchange (OTX) DirectConnect API provides programmatic access to the AlienVault OTX threat intelligence community. It exposes threat "pulses" (curated collections of indicators of compromise), indicator detail lookups (IPv4/IPv6, domain, hostname, URL, file hash, CVE), user and pulse search, and indicator submission. Authentication is by API key passed in the X-OTX-API-KEY request header. Endpoint paths and the authentication scheme are derived from the official AlienVault OTX Python SDK (OTXv2).
+  version: v1
+  contact:
+    name: AlienVault OTX (LevelBlue)
+    url: https://otx.alienvault.com/api
+  license:
+    name: OTX Terms of Service
+    url: https://otx.alienvault.com/terms/
+servers:
+- url: https://otx.alienvault.com
+  description: OTX production
+security:
+- OTXApiKey: []
+tags:
+- name: Pulses
+  description: Threat pulses (curated indicator collections)
+paths:
+  /api/v1/pulses/subscribed:
+    get:
+      operationId: getSubscribedPulses
+      summary: List subscribed pulses
+      description: Returns the pulses the authenticated user is subscribed to, paginated.
+      tags:
+      - Pulses
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: modified_since
+        in: query
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Paginated list of subscribed pulses
+        '403':
+          description: Missing or invalid API key
+  /api/v1/pulses/events:
+    get:
+      operationId: getPulseEvents
+      summary: List pulse subscription events
+      description: Returns a change feed of pulse events since a given timestamp.
+      tags:
+      - Pulses
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: since
+        in: query
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Paginated list of pulse events
+        '403':
+          description: Missing or invalid API key
+  /api/v1/pulses/{pulse_id}:
+    get:
+      operationId: getPulseDetails
+      summary: Get pulse details
+      tags:
+      - Pulses
+      parameters:
+      - name: pulse_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Pulse detail
+        '404':
+          description: Pulse not found
+  /api/v1/pulses/{pulse_id}/indicators:
+    get:
+      operationId: getPulseIndicators
+      summary: Get indicators for a pulse
+      tags:
+      - Pulses
+      parameters:
+      - name: pulse_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Paginated list of indicators
+        '404':
+          description: Pulse not found
+  /api/v1/pulses/create:
+    post:
+      operationId: createPulse
+      summary: Create a pulse
+      tags:
+      - Pulses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                public:
+                  type: boolean
+                tlp:
+                  type: string
+                tags:
+                  type: array
+                  items:
+                    type: string
+                indicators:
+                  type: array
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: Created pulse
+        '400':
+          description: Invalid pulse payload
+  /api/v1/pulses/my:
+    get:
+      operationId: getMyPulses
+      summary: List my pulses
+      tags:
+      - Pulses
+      responses:
+        '200':
+          description: Paginated list of the authenticated user's pulses
+        '403':
+          description: Missing or invalid API key
+  /api/v1/pulses/user/{username}:
+    get:
+      operationId: getUserPulses
+      summary: List a user's pulses
+      tags:
+      - Pulses
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated list of the user's pulses
+        '404':
+          description: User not found
+  /api/v1/pulses/{pulse_id}/subscribe:
+    post:
+      operationId: subscribeToPulse
+      summary: Subscribe to a pulse
+      tags:
+      - Pulses
+      parameters:
+      - name: pulse_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Subscribed
+  /api/v1/pulses/{pulse_id}/unsubscribe:
+    post:
+      operationId: unsubscribeFromPulse
+      summary: Unsubscribe from a pulse
+      tags:
+      - Pulses
+      parameters:
+      - name: pulse_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Unsubscribed
+  /api/v1/pulses/{pulse_id}/clone:
+    post:
+      operationId: clonePulse
+      summary: Clone a pulse
+      tags:
+      - Pulses
+      parameters:
+      - name: pulse_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Cloned pulse
+  /api/v1/pulses/{pulse_id}/delete:
+    post:
+      operationId: deletePulse
+      summary: Delete a pulse
+      tags:
+      - Pulses
+      parameters:
+      - name: pulse_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deleted
+components:
+  securitySchemes:
+    OTXApiKey:
+      type: apiKey
+      in: header
+      name: X-OTX-API-KEY
+      description: OTX API key, available from your OTX account settings page.

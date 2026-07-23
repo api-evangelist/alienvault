@@ -1,0 +1,14 @@
+generated: '2026-07-17'
+method: searched
+source: https://pypi.org/project/OTXv2/
+packages:
+- language: python
+  registry: pypi
+  name: OTXv2
+  url: https://pypi.org/project/OTXv2/
+  repo: https://github.com/AlienVault-Labs/OTX-Python-SDK
+  install: pip install OTXv2
+  official: true
+  description: >-
+    Official AlienVault OTX DirectConnect API Python SDK. Wraps the pulse, indicator,
+    user, and search endpoints of the Open Threat Exchange.

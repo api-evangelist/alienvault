@@ -1,0 +1,104 @@
+openapi: 3.0.3
+info:
+  title: AlienVault OTX DirectConnect Indicators Users API
+  description: The Open Threat Exchange (OTX) DirectConnect API provides programmatic access to the AlienVault OTX threat intelligence community. It exposes threat "pulses" (curated collections of indicators of compromise), indicator detail lookups (IPv4/IPv6, domain, hostname, URL, file hash, CVE), user and pulse search, and indicator submission. Authentication is by API key passed in the X-OTX-API-KEY request header. Endpoint paths and the authentication scheme are derived from the official AlienVault OTX Python SDK (OTXv2).
+  version: v1
+  contact:
+    name: AlienVault OTX (LevelBlue)
+    url: https://otx.alienvault.com/api
+  license:
+    name: OTX Terms of Service
+    url: https://otx.alienvault.com/terms/
+servers:
+- url: https://otx.alienvault.com
+  description: OTX production
+security:
+- OTXApiKey: []
+tags:
+- name: Users
+  description: OTX community users
+paths:
+  /api/v1/users/{username}:
+    get:
+      operationId: getUserInfo
+      summary: Get user info
+      tags:
+      - Users
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User profile
+        '404':
+          description: User not found
+  /api/v1/users/{username}/subscribe/:
+    post:
+      operationId: subscribeToUser
+      summary: Subscribe to a user
+      tags:
+      - Users
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Subscribed
+  /api/v1/users/{username}/unsubscribe/:
+    post:
+      operationId: unsubscribeFromUser
+      summary: Unsubscribe from a user
+      tags:
+      - Users
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Unsubscribed
+  /api/v1/users/{username}/follow:
+    post:
+      operationId: followUser
+      summary: Follow a user
+      tags:
+      - Users
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Following
+  /api/v1/users/{username}/unfollow:
+    post:
+      operationId: unfollowUser
+      summary: Unfollow a user
+      tags:
+      - Users
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Unfollowed
+components:
+  securitySchemes:
+    OTXApiKey:
+      type: apiKey
+      in: header
+      name: X-OTX-API-KEY
+      description: OTX API key, available from your OTX account settings page.

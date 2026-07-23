@@ -1,0 +1,25 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/alienvault-otx-openapi.yml
+standards:
+- id: oauth2
+  conforms: false
+  evidence: OTX authenticates with a static API key header, not OAuth2.
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use standard HTTP status codes with a JSON body, not application/problem+json.
+- id: pagination
+  conforms: true
+  evidence: List endpoints use limit/page params with a next/count response envelope.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key mechanism documented.
+- id: json-api
+  conforms: false
+- id: stix-taxii
+  conforms: false
+  evidence: >-
+    OTX exposes IOCs through its own pulse/indicator JSON model rather than STIX/TAXII on
+    the DirectConnect v1 API.

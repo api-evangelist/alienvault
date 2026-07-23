@@ -1,14 +1,36 @@
 aid: alienvault
 name: AlienVault
-description: 'AlienVault is a company surfaced as a portfolio company of kleiner-perkins and added to
-  the API Evangelist network as a stub for enrichment. Sector: security. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  AlienVault is the security company behind the Open Threat Exchange (OTX), one of the
+  largest open threat-intelligence communities in the world. OTX lets security
+  practitioners and researchers create and share "pulses" — curated collections of
+  indicators of compromise (IOCs) such as malicious IPs, domains, hostnames, URLs, file
+  hashes, and CVEs — and consume that shared intelligence to automatically update their
+  defensive infrastructure. The OTX DirectConnect API provides programmatic access to
+  subscribed pulses, indicator detail lookups across multiple facets (general, geo,
+  malware, passive DNS, reputation, URL lists), pulse and user search, and indicator
+  submission for analysis. Authentication is via an X-OTX-API-KEY header. AlienVault was
+  acquired by AT&T in 2018, becoming AT&T Cybersecurity, and OTX now operates under the
+  LevelBlue brand. An official Python SDK (OTXv2) is published on PyPI and GitHub.
 url: https://raw.githubusercontent.com/api-evangelist/alienvault/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://otx.alienvault.com/static/otx/img/otx_logo.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - kleiner-perkins
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
@@ -16,9 +38,143 @@ modified: '2026-07-17'
 tags:
 - Company
 - Security
-apis: []
+- Threat Intelligence
+- Cybersecurity
+- Open Threat Exchange
+- Indicators of Compromise
+- Threat Feeds
+- API
+apis:
+- aid: alienvault:alienvault-indicators-api
+  name: AlienVault Indicators API
+  description: Indicator of compromise detail lookups and submission
+  humanURL: https://otx.alienvault.com/api
+  baseURL: https://otx.alienvault.com/api/v1
+  tags:
+  - Indicators
+  properties:
+  - type: OpenAPI
+    url: openapi/alienvault-indicators-api-openapi.yml
+  - type: Authentication
+    url: authentication/alienvault-authentication.yml
+  - type: Conventions
+    url: conventions/alienvault-conventions.yml
+  - type: ErrorCatalog
+    url: errors/alienvault-problem-types.yml
+  - type: DataModel
+    url: data-model/alienvault-data-model.yml
+  - type: Conformance
+    url: conformance/alienvault-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/alienvault-lifecycle.yml
+- aid: alienvault:alienvault-pulses-api
+  name: AlienVault Pulses API
+  description: Threat pulses (curated indicator collections)
+  humanURL: https://otx.alienvault.com/api
+  baseURL: https://otx.alienvault.com/api/v1
+  tags:
+  - Pulses
+  properties:
+  - type: OpenAPI
+    url: openapi/alienvault-pulses-api-openapi.yml
+  - type: Authentication
+    url: authentication/alienvault-authentication.yml
+  - type: Conventions
+    url: conventions/alienvault-conventions.yml
+  - type: ErrorCatalog
+    url: errors/alienvault-problem-types.yml
+  - type: DataModel
+    url: data-model/alienvault-data-model.yml
+  - type: Conformance
+    url: conformance/alienvault-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/alienvault-lifecycle.yml
+- aid: alienvault:alienvault-search-api
+  name: AlienVault Search API
+  description: Search across pulses and users
+  humanURL: https://otx.alienvault.com/api
+  baseURL: https://otx.alienvault.com/api/v1
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/alienvault-search-api-openapi.yml
+  - type: Authentication
+    url: authentication/alienvault-authentication.yml
+  - type: Conventions
+    url: conventions/alienvault-conventions.yml
+  - type: ErrorCatalog
+    url: errors/alienvault-problem-types.yml
+  - type: DataModel
+    url: data-model/alienvault-data-model.yml
+  - type: Conformance
+    url: conformance/alienvault-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/alienvault-lifecycle.yml
+- aid: alienvault:alienvault-users-api
+  name: AlienVault Users API
+  description: OTX community users
+  humanURL: https://otx.alienvault.com/api
+  baseURL: https://otx.alienvault.com/api/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/alienvault-users-api-openapi.yml
+  - type: Authentication
+    url: authentication/alienvault-authentication.yml
+  - type: Conventions
+    url: conventions/alienvault-conventions.yml
+  - type: ErrorCatalog
+    url: errors/alienvault-problem-types.yml
+  - type: DataModel
+    url: data-model/alienvault-data-model.yml
+  - type: Conformance
+    url: conformance/alienvault-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/alienvault-lifecycle.yml
+common:
+- type: DeveloperPortal
+  url: https://otx.alienvault.com/api
+- type: Documentation
+  url: https://otx.alienvault.com/api
+- type: APIReference
+  url: https://otx.alienvault.com/api
+- type: GitHubOrganization
+  url: https://github.com/AlienVault-Labs
+- type: SignUp
+  url: https://otx.alienvault.com/
+- type: TermsOfService
+  url: https://otx.alienvault.com/terms/
+- type: Packages
+  url: packages/alienvault-packages.yml
+- type: SDKs
+  url: packages/alienvault-packages.yml
+- type: MCPServer
+  url: mcp/alienvault-mcp.yml
+- type: LLMsTxt
+  url: llms/alienvault-llms.txt
+- type: Authentication
+  url: authentication/alienvault-authentication.yml
+- type: DomainSecurity
+  url: security/alienvault-domain-security.yml
+- type: Conventions
+  url: conventions/alienvault-conventions.yml
+- type: DataModel
+  url: data-model/alienvault-data-model.yml
+- type: Conformance
+  url: conformance/alienvault-conformance.yml
+- type: Lifecycle
+  url: lifecycle/alienvault-lifecycle.yml
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
