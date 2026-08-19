@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AlienVault OTX DirectConnect Indicators API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-OTX-API-KEY",
+      "value": "{{X-OTX-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Indicators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate an indicator",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://otx.alienvault.com/api/v1/pulses/indicators/validate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate an indicator"
+        },
+        {
+          "info": {
+            "name": "Get indicator details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://otx.alienvault.com/api/v1/indicators/:type/:indicator/:section",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "indicator",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "section",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Look up threat detail for an indicator. `type` is one of IPv4, IPv6, domain, hostname, url, hash (file), cve. `section` selects a facet (general, geo, malware, url_list, passive_dns, reputation, analysis, etc.)."
+        },
+        {
+          "info": {
+            "name": "Submit a file for analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://otx.alienvault.com/api/v1/indicators/submit_file",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Submit a file for analysis"
+        },
+        {
+          "info": {
+            "name": "List submitted files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://otx.alienvault.com/api/v1/indicators/submitted_files"
+          },
+          "docs": "List submitted files"
+        },
+        {
+          "info": {
+            "name": "Submit a URL for analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://otx.alienvault.com/api/v1/indicators/submit_url",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a URL for analysis"
+        },
+        {
+          "info": {
+            "name": "Submit multiple URLs for analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://otx.alienvault.com/api/v1/indicators/submit_urls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit multiple URLs for analysis"
+        },
+        {
+          "info": {
+            "name": "List submitted URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://otx.alienvault.com/api/v1/indicators/submitted_urls"
+          },
+          "docs": "List submitted URLs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -2,9 +2,8 @@ generated: '2026-07-17'
 method: derived
 status: candidate
 source: openapi/alienvault-otx-openapi.yml
-notes: >-
-  No official hosted/remote AlienVault OTX MCP server was found. This is a candidate
-  tool surface derived one-tool-per-operation from the OTX DirectConnect OpenAPI.
+notes: No official hosted/remote AlienVault OTX MCP server was found. This is a candidate tool surface
+  derived one-tool-per-operation from the OTX DirectConnect OpenAPI.
 server:
   name: alienvault-otx
   transport: stdio
@@ -33,3 +32,9 @@ tools:
 - name: search_users
   description: Search OTX community users.
   source_operation: openapi/alienvault-otx-openapi.yml#searchUsers
+deployment:
+  mode: none
+  verified: derived
+  tools: 8
+  checked: '2026-08-12'
+  source: catalog MCP census

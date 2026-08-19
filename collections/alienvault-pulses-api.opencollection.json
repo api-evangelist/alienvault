@@ -1,0 +1,244 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AlienVault OTX DirectConnect Indicators Pulses API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-OTX-API-KEY",
+      "value": "{{X-OTX-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pulses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List subscribed pulses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://otx.alienvault.com/api/v1/pulses/subscribed",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "modified_since",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the pulses the authenticated user is subscribed to, paginated."
+        },
+        {
+          "info": {
+            "name": "List pulse subscription events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://otx.alienvault.com/api/v1/pulses/events",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a change feed of pulse events since a given timestamp."
+        },
+        {
+          "info": {
+            "name": "Get pulse details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://otx.alienvault.com/api/v1/pulses/:pulse_id",
+            "params": [
+              {
+                "name": "pulse_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get pulse details"
+        },
+        {
+          "info": {
+            "name": "Get indicators for a pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://otx.alienvault.com/api/v1/pulses/:pulse_id/indicators",
+            "params": [
+              {
+                "name": "pulse_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get indicators for a pulse"
+        },
+        {
+          "info": {
+            "name": "Create a pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://otx.alienvault.com/api/v1/pulses/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a pulse"
+        },
+        {
+          "info": {
+            "name": "List my pulses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://otx.alienvault.com/api/v1/pulses/my"
+          },
+          "docs": "List my pulses"
+        },
+        {
+          "info": {
+            "name": "List a user's pulses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://otx.alienvault.com/api/v1/pulses/user/:username",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a user's pulses"
+        },
+        {
+          "info": {
+            "name": "Subscribe to a pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://otx.alienvault.com/api/v1/pulses/:pulse_id/subscribe",
+            "params": [
+              {
+                "name": "pulse_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Subscribe to a pulse"
+        },
+        {
+          "info": {
+            "name": "Unsubscribe from a pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://otx.alienvault.com/api/v1/pulses/:pulse_id/unsubscribe",
+            "params": [
+              {
+                "name": "pulse_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unsubscribe from a pulse"
+        },
+        {
+          "info": {
+            "name": "Clone a pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://otx.alienvault.com/api/v1/pulses/:pulse_id/clone",
+            "params": [
+              {
+                "name": "pulse_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Clone a pulse"
+        },
+        {
+          "info": {
+            "name": "Delete a pulse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://otx.alienvault.com/api/v1/pulses/:pulse_id/delete",
+            "params": [
+              {
+                "name": "pulse_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a pulse"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
