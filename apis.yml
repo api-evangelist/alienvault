@@ -43,6 +43,14 @@ tags:
 - Open Threat Exchange
 - Indicators of Compromise
 - Threat Feeds
+tags_raw:
+- Company
+- Security
+- Threat Intelligence
+- Cybersecurity
+- Open Threat Exchange
+- Indicators of Compromise
+- Threat Feeds
 - API
 apis:
 - aid: alienvault:alienvault-indicators-api
@@ -117,6 +125,8 @@ apis:
   humanURL: https://otx.alienvault.com/api
   baseURL: https://otx.alienvault.com/api/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
