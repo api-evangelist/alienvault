@@ -156,6 +156,11 @@ apis:
   - type: Lifecycle
     url: lifecycle/alienvault-lifecycle.yml
 common:
+- type: ParentCompany
+  url: https://apis.io/providers/att/
+  name: AT&T
+  x-relationship: acquired
+  x-evidence: "AlienVault was acquired by AT&T in 2018, becoming AT&T Cybersecurity, and OTX now operates under the LevelBlue brand."
 - type: Overlay
   url: overlays/alienvault-otx-overlay.yaml
 - type: DeveloperPortal
