@@ -1,17 +1,14 @@
 aid: alienvault
 name: AlienVault
-description: >-
-  AlienVault is the security company behind the Open Threat Exchange (OTX), one of the
-  largest open threat-intelligence communities in the world. OTX lets security
-  practitioners and researchers create and share "pulses" — curated collections of
-  indicators of compromise (IOCs) such as malicious IPs, domains, hostnames, URLs, file
-  hashes, and CVEs — and consume that shared intelligence to automatically update their
-  defensive infrastructure. The OTX DirectConnect API provides programmatic access to
-  subscribed pulses, indicator detail lookups across multiple facets (general, geo,
-  malware, passive DNS, reputation, URL lists), pulse and user search, and indicator
-  submission for analysis. Authentication is via an X-OTX-API-KEY header. AlienVault was
-  acquired by AT&T in 2018, becoming AT&T Cybersecurity, and OTX now operates under the
-  LevelBlue brand. An official Python SDK (OTXv2) is published on PyPI and GitHub.
+description: AlienVault is the security company behind the Open Threat Exchange (OTX), one of the largest
+  open threat-intelligence communities in the world. OTX lets security practitioners and researchers create
+  and share "pulses" — curated collections of indicators of compromise (IOCs) such as malicious IPs, domains,
+  hostnames, URLs, file hashes, and CVEs — and consume that shared intelligence to automatically update
+  their defensive infrastructure. The OTX DirectConnect API provides programmatic access to subscribed
+  pulses, indicator detail lookups across multiple facets (general, geo, malware, passive DNS, reputation,
+  URL lists), pulse and user search, and indicator submission for analysis. Authentication is via an X-OTX-API-KEY
+  header. AlienVault was acquired by AT&T in 2018, becoming AT&T Cybersecurity, and OTX now operates under
+  the LevelBlue brand. An official Python SDK (OTXv2) is published on PyPI and GitHub.
 url: https://raw.githubusercontent.com/api-evangelist/alienvault/refs/heads/main/apis.yml
 deliveryModel:
   model: saas
@@ -47,7 +44,7 @@ x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-09-16'
 tags:
 - Company
 - Security
@@ -157,11 +154,14 @@ apis:
   - type: Lifecycle
     url: lifecycle/alienvault-lifecycle.yml
 common:
+- type: Website
+  url: https://alienvault.com
 - type: ParentCompany
   url: https://apis.io/providers/att/
   name: AT&T
   x-relationship: acquired
-  x-evidence: "AlienVault was acquired by AT&T in 2018, becoming AT&T Cybersecurity, and OTX now operates under the LevelBlue brand."
+  x-evidence: AlienVault was acquired by AT&T in 2018, becoming AT&T Cybersecurity, and OTX now operates
+    under the LevelBlue brand.
 - type: Overlay
   url: overlays/alienvault-otx-overlay.yaml
 - type: DeveloperPortal
@@ -182,7 +182,10 @@ common:
   url: packages/alienvault-packages.yml
 - type: X-MCPServerCandidate
   url: mcp/alienvault-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
 - type: LLMsTxt
   url: llms/alienvault-llms.txt
 - type: Authentication
