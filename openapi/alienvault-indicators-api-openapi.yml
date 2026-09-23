@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: AlienVault OTX DirectConnect Indicators API
-  description: The Open Threat Exchange (OTX) DirectConnect API provides programmatic access to the AlienVault OTX threat intelligence community. It exposes threat "pulses" (curated collections of indicators of compromise), indicator detail lookups (IPv4/IPv6, domain, hostname, URL, file hash, CVE), user and pulse search, and indicator submission. Authentication is by API key passed in the X-OTX-API-KEY request header. Endpoint paths and the authentication scheme are derived from the official AlienVault OTX Python SDK (OTXv2).
+  description: The Open Threat Exchange (OTX) DirectConnect API provides programmatic access to the AlienVault OTX threat intelligence community.
   version: v1
   contact:
     name: AlienVault OTX (LevelBlue)
