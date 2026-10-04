@@ -154,6 +154,9 @@ apis:
   - type: Lifecycle
     url: lifecycle/alienvault-lifecycle.yml
 common:
+- type: CapabilityMap
+  url: capabilities/alienvault-capability-edges.yml
+  name: AlienVault Business Capability Map
 - type: Website
   url: https://alienvault.com
 - type: ParentCompany
